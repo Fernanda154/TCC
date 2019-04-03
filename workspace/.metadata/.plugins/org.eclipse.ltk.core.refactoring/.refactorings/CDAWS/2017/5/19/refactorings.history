@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;refeicao&apos; in &apos;br.edu.ifrn.cda.data.RefeicaoDAO.buscarRefeicaoDoEstudante(...)&apos; to &apos;solicitacao&apos;&#x0D;&#x0A;- Original project: &apos;CDAWS&apos;&#x0D;&#x0A;- Original element: &apos;br.edu.ifrn.cda.data.RefeicaoDAO.buscarRefeicaoDoEstudante(String).refeicao&apos;&#x0D;&#x0A;- Renamed element: &apos;refeicao&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;refeicao&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;br.edu.ifrn.cda.data{RefeicaoDAO.java[RefeicaoDAO~buscarRefeicaoDoEstudante~QString;@refeicao!5296!5336!5308!5315!QSolicitacao;!0!false" name="solicitacao" references="true" stamp="1494348772742" version="1.0"/>
+</session>

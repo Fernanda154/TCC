@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fundo_do_app"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="br.edu.ifrn.cda.ui.RequisicaoAlunoActivity" >
+
+    <Button
+        android:id="@+id/button1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="118dp"
+        android:onClick="cancelarSolicitacao"
+        android:text="Cancelar refeição" />
+
+    <EditText
+        android:id="@+id/etTipoRefeicao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/TipoRefeicao"
+        android:layout_toRightOf="@+id/TipoRefeicao"
+        android:ems="10"
+        android:enabled="false" />
+
+    <TextView
+        android:id="@+id/TipoRefeicao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="Tipo da Refeição:" />
+
+    <EditText
+        android:id="@+id/etStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/status"
+        android:layout_alignBottom="@+id/status"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/matricula"
+        android:ems="10"
+        android:enabled="false" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TipoRefeicao"
+        android:layout_alignLeft="@+id/TipoRefeicao"
+        android:layout_marginBottom="22dp"
+        android:text="Status" />
+
+    <TextView
+        android:id="@+id/matricula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etStatus"
+        android:layout_alignLeft="@+id/status"
+        android:text="Matricula" />
+
+    <EditText
+        android:id="@+id/etMatriculaR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/matricula"
+        android:layout_alignRight="@+id/etStatus"
+        android:ems="10"
+        android:enabled="false" >
+
+        <requestFocus />
+    </EditText>
+
+    <Spinner
+        android:id="@+id/spDescricaoServidorA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etMatriculaR"
+        android:layout_alignLeft="@+id/matricula"
+        android:layout_marginBottom="24dp" 
+       />
+
+</RelativeLayout>

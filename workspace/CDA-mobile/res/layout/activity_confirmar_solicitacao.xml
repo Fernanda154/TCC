@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fundo_do_app"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="br.edu.ifrn.cda.ui.ConfirmarSolicitacaoActivity" >
+    
+    <ImageView
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_aluno" />
+
+    <TextView
+        android:id="@+id/tvAcompEstud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageButton1"
+        android:layout_below="@+id/imageButton1"
+        android:text="Aluno(a)" />
+
+     <ImageButton
+         android:id="@+id/rejeitar"
+         android:layout_width="90dp"
+         android:layout_height="90dp"
+         android:layout_below="@+id/aceitar"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="66dp"
+         android:background="@drawable/ic_rejeitar"
+         android:onClick="rejeitar" />
+
+     <ImageButton
+         android:id="@+id/aceitar"
+         android:layout_width="90dp"
+         android:layout_height="90dp"
+         android:layout_alignLeft="@+id/rejeitar"
+         android:layout_below="@+id/tvAcompEstud"
+         android:layout_marginTop="31dp"
+         android:background="@drawable/ic_aceitar"
+         android:onClick="aceitar" />
+
+     <TextView
+         android:id="@+id/tvAceitar"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/aceitar"
+         android:layout_centerHorizontal="true"
+         android:text="Aceitar" />
+
+     <TextView
+         android:id="@+id/tvRejeitar"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/rejeitar"
+         android:layout_centerHorizontal="true"
+         android:text="Rejeitar" />
+
+</RelativeLayout>

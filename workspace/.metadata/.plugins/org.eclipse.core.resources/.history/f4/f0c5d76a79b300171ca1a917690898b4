@@ -1,0 +1,185 @@
+package br.edu.ifrn.cda.ui;
+
+import android.support.v7.app.ActionBarActivity;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.AdapterView.OnItemClickListener;
+import br.edu.ifrn.cda.R;
+import br.edu.ifrn.cda.DAO.RefeicaoDAO;
+import br.edu.ifrn.cda.DAO.SolicitacaoDAO;
+import br.edu.ifrn.cda.R.id;
+import br.edu.ifrn.cda.R.layout;
+import br.edu.ifrn.cda.R.menu;
+import br.edu.ifrn.cda.dominio.Refeicao;
+import br.edu.ifrn.cda.dominio.Solicitacao;
+
+public class RequisicaoAlunoActivity extends ActionBarActivity {
+	private Solicitacao objSolicitacao;
+	private int posicaoSelecionada;
+	private EditText etMatriculaR, etStatus, etDescricaoA, tipoRf;
+	private Spinner spDescricao;
+	private Button btCancelar;
+	private ArrayList <Refeicao> refeicoes2;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_requisicao_aluno);
+		spDescricao = (Spinner) findViewById(R.id.spDescricaoServidorA);
+		btCancelar = (Button) findViewById(R.id.button1);
+		ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.spDescricoes,
+				android.R.layout.simple_spinner_item);
+		spDescricao.setAdapter(adapter);
+		
+		etMatriculaR = (EditText)findViewById(R.id.etMatriculaR);
+		etStatus = (EditText)findViewById(R.id.etStatus);
+		tipoRf = (EditText)findViewById(R.id.etTipoRefeicao);
+		if (android.os.Build.VERSION.SDK_INT > 9) {
+			StrictMode.ThreadPolicy policy = 
+					new StrictMode.ThreadPolicy.Builder().permitAll().build();
+			StrictMode.setThreadPolicy(policy);
+		}
+		
+		Bundle dados = getIntent().getExtras();
+		
+		if (dados.containsKey("itemSelecionado")) {
+			
+			objSolicitacao = (Solicitacao) dados.getSerializable("itemSelecionado");
+			etMatriculaR.setText(objSolicitacao.getMatriculaAluno());
+			escrevendo(objSolicitacao.getStatus());
+			spDescricao.setSelection(objSolicitacao.getDescricaoServidor());
+			spDescricao.setEnabled(false);
+			verificarBotaoCancelar();
+			
+			if(objSolicitacao.getTipoRefeicao() == 1){
+				tipoRf.setText("Almoço");
+			}else{
+				tipoRf.setText("Jantar");
+			}
+			
+		} 
+		
+		
+	}
+	public void escrevendo(int status){
+		if(status ==2){
+			etStatus.setText("Liberado");
+			
+			
+		}else if(status == 3){
+			
+			etStatus.setText("Não liberado");
+			
+			
+		}
+		else if(status == 4){
+
+			etStatus.setText("Cancelado");
+
+		}
+		else if(status == 5){
+			etStatus.setText("Presença confirmada");
+		}
+		else{
+			etStatus.setText("Aguardando avaliação");
+		}
+	}
+	public void cancelarSolicitacao(View view) {
+		
+		objSolicitacao.setStatus(4);
+		
+		SolicitacaoDAO objNovo = new SolicitacaoDAO();
+		boolean resultado = objNovo.atualizar(objSolicitacao);
+		
+		Bundle bundle = new Bundle();
+		bundle.putSerializable("retornoItemSelecionado", objSolicitacao);
+		
+		
+		
+		Intent it = new Intent();
+		it.putExtras(bundle);
+		setResult(RESULT_OK, it);
+		finish();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.requisicao_aluno, menu);
+		return true;
+	}
+
+	
+	public boolean onOptionsItemSelected(AdapterView<?> parent, View view, int position, long id1, MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		spDescricao.setEnabled(true);
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	private void verificarBotaoCancelar(){
+		
+		if(objSolicitacao.getStatus() == 1 || objSolicitacao.getStatus() == 2){
+			
+		}
+		
+		else if(objSolicitacao.getStatus() > 2){
+			btCancelar.setEnabled(false);
+		}else{
+			btCancelar.setEnabled(true);
+		}
+		
+	}
+	
+	private Date converterData(long data, int tipoRefeicao){
+		
+		Calendar c = Calendar.getInstance();
+		c.setTime(new Date(data));
+		
+		if(tipoRefeicao == 1){
+			c.set(Calendar.HOUR, 12);
+			c.set(Calendar.MINUTE, 0);
+		}
+		else if(tipoRefeicao == 2){
+			c.set(Calendar.HOUR, 18);
+			c.set(Calendar.MINUTE, 0);
+		}
+		else if(tipoRefeicao == 3){
+			c.set(Calendar.HOUR, 8);
+			c.set(Calendar.MINUTE, 30);
+		}
+		else if(tipoRefeicao == 4){
+			c.set(Calendar.HOUR, 16);
+			c.set(Calendar.MINUTE, 10);
+		}
+		else if(tipoRefeicao == 5){
+			c.set(Calendar.HOUR, 20);
+			c.set(Calendar.MINUTE, 30);
+		}
+		
+			c.set(Calendar.SECOND, 0);
+		return 
+	}
+	
+}
+
+

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Change Layout" description="Change Layout" file="/CDA-mobile/res/layout/activity_cadastro_s.xml" flags="6" flatten="true" id="com.android.ide.eclipse.adt.refactoring.convert" proj="/CDA-mobile" sel-end="3507" sel-start="0" stamp="1492538483068" type="android.widget.LinearLayout"/>&#x0A;<refactoring comment="Change Layout" description="Change Layout" file="/CDA-mobile/res/layout/activity_cadastro_r.xml" flags="6" flatten="true" id="com.android.ide.eclipse.adt.refactoring.convert" proj="/CDA-mobile" sel-end="2339" sel-start="0" stamp="1492539666806" type="android.widget.LinearLayout"/>
+</session>

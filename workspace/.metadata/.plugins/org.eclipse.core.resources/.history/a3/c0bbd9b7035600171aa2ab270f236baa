@@ -1,0 +1,84 @@
+package br.edu.ifrn.cda.ui;
+
+import br.edu.ifrn.cda.R;
+import br.edu.ifrn.cda.R.id;
+import br.edu.ifrn.cda.R.layout;
+import br.edu.ifrn.cda.R.menu;
+import br.edu.ifrn.cda.dominio.Estudante;
+import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+
+public class AlunoActivity extends ActionBarActivity {
+	Estudante estudante ;
+	private final static int REQUEST_CODE = 0;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_aluno);
+
+		Intent i = getIntent();
+
+		if(i.getExtras().containsKey("estudante")){
+
+			estudante = (Estudante) i.getExtras().get("estudante");
+		}
+
+	}
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+
+		if(REQUEST_CODE == requestCode && RESULT_OK == resultCode){
+
+			String codigo = data.getStringExtra("SCAN_RESULT");
+
+			Toast.makeText(this, "Deu certo! " , Toast.LENGTH_LONG).show();
+
+		}
+	}
+	public void marcando(View view){
+		Intent intent = new Intent(this,CadastroSActivity.class);
+		startActivity(intent);
+	}
+	public void lerCodigo(View view){
+		Intent it = new Intent(this, com.google.zxing.client.android.CaptureActivity.class);
+		startActivityForResult(it, REQUEST_CODE);
+	}
+
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.professor, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+
+	}
+	public void sair(View view){
+		finish();
+	}
+
+	public void acompanhar(View view){
+		Intent intent = new Intent(this,AcompanharEstudanteActivity.class);
+						//Isso é uma chave e um obj estudante
+		intent.putExtra("estudante1", estudante);
+		startActivity(intent);
+	}
+}

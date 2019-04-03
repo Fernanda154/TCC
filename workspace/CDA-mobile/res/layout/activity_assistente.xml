@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fundo_do_app"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="br.edu.ifrn.cda.ui.AssistenteActivity" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/ibAssis"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_gravity="left|center_horizontal"
+                android:background="@drawable/ic_assistente" />
+
+            <TextView
+                android:id="@+id/tvAssis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Assistente Social"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/ibSaid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/ic_saida"
+            android:onClick="sair"
+            android:src="@drawable/ic_saida" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="14dp"
+            android:layout_toLeftOf="@+id/ibSaid"
+            android:src="@drawable/ic_notifi" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_below="@+id/ibSaid"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="-5dp"
+            android:layout_toLeftOf="@+id/ibSaid" />
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/aceitar"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/marc"
+        android:onClick="gerar" />
+
+    <TextView
+        android:id="@+id/textNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Gerar Refeição"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageButton
+        android:id="@+id/ibAcomp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/ic_acom"
+        android:onClick="acompanhar" />
+
+    <TextView
+        android:id="@+id/tvAcomp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Acompanhar Solicitação"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</LinearLayout>
